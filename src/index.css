@@ -1,13 +1,170 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Fonts */
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: bold;
+  src: url("assets/fonts/eot/iranyekanwebbold.eot");
+  src: url("assets/fonts/eot/iranyekanwebbold.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebbold.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebbold.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebbold.ttf") format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 100;
+  src: url("assets/fonts/eot/iranyekanwebthin.eot");
+  src: url("assets/fonts/eot/iranyekanwebthin.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebthin.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebthin.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebthin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 300;
+  src: url("assets/fonts/eot/iranyekanweblight.eot");
+  src: url("assets/fonts/eot/iranyekanweblight.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanweblight.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanweblight.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanweblight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: normal;
+  src: url("assets/fonts/eot/iranyekanwebregular.eot");
+  src: url("assets/fonts/eot/iranyekanwebregular.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebregular.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebregular.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebregular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 500;
+  src: url("assets/fonts/eot/iranyekanwebmedium.eot");
+  src: url("assets/fonts/eot/iranyekanwebmedium.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebmedium.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebmedium.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebmedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 800;
+  src: url("assets/fonts/eot/iranyekanwebextrabold.eot");
+  src: url("assets/fonts/eot/iranyekanwebextrabold.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebextrabold.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebextrabold.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebextrabold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 850;
+  src: url("assets/fonts/eot/iranyekanwebblack.eot");
+  src: url("assets/fonts/eot/iranyekanwebblack.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebblack.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebblack.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebblack.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: iranyekan;
+  font-style: normal;
+  font-weight: 900;
+  src: url("assets/fonts/eot/iranyekanwebextrablack.eot");
+  src: url("assets/fonts/eot/iranyekanwebextrablack.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/woff/iranyekanwebextrablack.woff") format("woff"),
+    url("assets/fonts/woff2/iranyekanwebextrablack.woff2") format("woff2"),
+    url("assets/fonts/ttf/iranyekanwebextrablack.ttf") format("truetype");
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /* This takes away the default behaviour of elements like "h" elements which have default "font-size" and "font-weight" */
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Setting 1rem to 10px */
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  direction: rtl;
+  font-family: iranyekan !important;
+
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
