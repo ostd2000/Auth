@@ -148,23 +148,3 @@ func generateRefreshToken(userID string) (signedRefreshToken string, err error) 
 
 	return
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
