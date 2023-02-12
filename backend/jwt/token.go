@@ -27,7 +27,7 @@ type Header struct {
 
 
 // Encodes given byte array to base64url string.
-func base64urlEncode(data []byte) string {
+func Base64UrlEncode(data []byte) string {
   result :=  base64.StdEncoding.EncodeToString(data)
 
 	// 62nd char of encoding.
@@ -44,7 +44,7 @@ func base64urlEncode(data []byte) string {
 
 
 // Decodes base64url string to byte array.
-func base64urlDecode(data string) ([]byte, error) {
+func Base64UrlDecode(data string) ([]byte, error) {
 	// 62 char of encoding.
 	data = strings.Replace(data, "-", "+", -1)
 
@@ -67,25 +67,23 @@ func base64urlDecode(data string) ([]byte, error) {
 }
 
 
-func tokenSignature(msg []byte, key []byte) (tokenSignature string) {
+func TokenSignature(msg []byte, key []byte) string {
   mac := hmac.New(sha256.New, key)
 	mac.Write(msg)
 	
-	expectedMAC := mac.Sum(nil)
-
-	tokenSignature = string(expectedMAC)
+	expectedMAC := mac.Sum(nil)	
   
-	return 
+	return string(expectedMAC)
 }
 
 
 var secretKey string = os.Getenv("SECRET_KEY")
 
 
-func generateAccessToken(userID string) (signedAccessToken string, err error) {
-  header := &Header{
+func GenerateAccessToken(userID string) (signedAccessToken string, err error) {
+    header := &Header{
 		alg: constants.JWT_SIGNING_ALGORITHM,
-	  typ: "JWT",	
+	    typ: "JWT",	
 	}
 
 	jsonHeader, err := json.Marshal(header)
@@ -103,20 +101,20 @@ func generateAccessToken(userID string) (signedAccessToken string, err error) {
 	jsonAccessClaims, err := json.Marshal(accessClaims)
 
 	if err != nil {
-    log.Panic(err)		
+        log.Panic(err)			
 
-		return
+		return 
 	}
 
-	msg := base64urlEncode(jsonHeader) + "." + base64urlEncode(jsonAccessClaims)
+	msg := Base64UrlEncode(jsonHeader) + "." + Base64UrlEncode(jsonAccessClaims)
   
-	signedAccessToken = tokenSignature([]byte(msg), []byte(secretKey))
+	signedAccessToken = TokenSignature([]byte(msg), []byte(secretKey))
 
-	return 
+	return
 }
 
 
-func generateRefreshToken(userID string) (signedRefreshToken string, err error) {
+func GenerateRefreshToken(userID string) (signedRefreshToken string, err error) {
   header := &Header{
 		alg: constants.JWT_SIGNING_ALGORITHM,
 		typ: "JWT",
@@ -142,9 +140,9 @@ func generateRefreshToken(userID string) (signedRefreshToken string, err error) 
 		return
 	}
 
-	msg := base64urlEncode(jsonHeader) + "." + base64urlEncode(jsonRefreshClaims)
+	msg := Base64UrlEncode(jsonHeader) + "." + Base64UrlEncode(jsonRefreshClaims)
 
-	signedRefreshToken = tokenSignature([]byte(msg), []byte(secretKey))
+	signedRefreshToken = TokenSignature([]byte(msg), []byte(secretKey))
 
 	return
 } 
